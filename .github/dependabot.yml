@@ -8,10 +8,14 @@ updates:
     open-pull-requests-limit: 5
     labels: [dependencies, maven]
     groups:
-      paper-api:
-        patterns: ["io.papermc.paper:*"]
       maven-plugins:
         patterns: ["org.apache.maven.plugins:*"]
+    # Paper API uses a non-monotonic versioning stream — Dependabot sees a
+    # "26.x.x-stable" artifact and reads it as newer than "1.21.4-R0.1-SNAPSHOT",
+    # but those are different distribution channels and not API-compatible.
+    # We update paper-api manually whenever we move to a new Minecraft version.
+    ignore:
+      - dependency-name: "io.papermc.paper:paper-api"
 
   - package-ecosystem: github-actions
     directory: "/"
