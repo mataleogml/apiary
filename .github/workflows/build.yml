@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build (JDK ${{ matrix.java }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [21]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Resolve dependencies
+        run: mvn -B -ntp dependency:go-offline
+
+      - name: Compile
+        run: mvn -B -ntp compile
+
+      - name: Package
+        run: mvn -B -ntp package
+
+      - name: Upload jar
+        if: matrix.java == 21
+        uses: actions/upload-artifact@v4
+        with:
+          name: Apiary-${{ github.sha }}
+          path: target/Apiary-*.jar
+          retention-days: 14
+          if-no-files-found: error

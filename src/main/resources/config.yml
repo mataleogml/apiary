@@ -1,0 +1,206 @@
+# Apiary - tiered beehives configuration
+# See comments above each setting for usage notes.
+
+# ----------------------------------------------------------------------------
+# Legacy BeehivesPro compatibility.
+# Keep these enabled if you are migrating from BeehivesPro and want existing
+# player permissions, command aliases, and saved items/blocks to keep working.
+# New installs that don't care about BeehivesPro can set both to false.
+# ----------------------------------------------------------------------------
+legacy-compatibility:
+  # Accept /bp, /bhp, /beehivespro as command aliases.
+  command-aliases: true
+  # Accept beehivespro.* permissions in addition to apiary.* permissions.
+  permissions: true
+
+#The lore line above the bees for Apiary items
+beehive-item-bees-lore: "&6* &e&nBees&r &6*"
+#The name above the of the bees, placeholders %BEE_NAME% and %BEEHIVE_NAME% can be used here.
+#Set this to empty '' if you don't want your bees to have names.
+bee-name-format: "%BEE_NAME% &f~ %BEEHIVE_NAME%"
+#Enable this to let players rename bees with a name tag and keep their hives displayed behind their name.
+enable-bee-renaming: true
+#The format in which the bee's hive will be behind it's name when renamed (if it's hive has a name).
+bee-renamed-hive: " &f~ %BEEHIVE_NAME%"
+#The max level that Apiary beehives can reach
+beehive-max-level: 10
+
+#The message you get in chat when right clicking a beehive. Placeholders %HONEY_LEVEL% and %MAX_HONEY_LEVEL% can be used.
+beehive-honey-level-message: "&6Honey Level: %HONEY_LEVEL%&e/&6%MAX_HONEY_LEVEL%"
+#The message players get when they use shears on an Apiary beehive. Placeholder %AMOUNT% may be used.
+beehive-shear-message: "&7You harvested &e%AMOUNT% &6Honeycombs"
+#The message players get when they use glass bottles on an Apiary beehive. Placeholder %AMOUNT% may be used.
+beehive-bottle-message: "&7You harvested &e%AMOUNT% &6Honey Bottles"
+
+#Enable or disable the harvesting of honey blocks from an Apiary beehive.
+harvest-honey-blocks: true
+#The minimum level a beehive has to be before you can harvest honey blocks from it.
+harvest-honey-blocks-minimum-level: 4
+#The amount of blocks you will harvest at the harvest-honey-blocks-minimum-level. It will increase by 1 block for every level above.
+harvest-honey-blocks-start-amount: 1
+#The harvesting tool that must be used to harvest the honey blocks.
+#List of valid item types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+harvest-honey-blocks-tool: GOLDEN_HOE
+#The message players get when they harvest honey blocks from an Apiary beehive. Placeholder %AMOUNT% may be used.
+harvest-honey-block-message: "&7You harvested &e%AMOUNT% &6Honey Blocks"
+
+#Enable or disable the custom animation when harvesting from an Apiary beehive.
+#The higher the level of the beehive, the more particles will spawn.
+beehive-harvest-animation: true
+
+#Enable or disable the ability for players to level up their Apiary beehives with level tokens.
+#You can get these tokens by using the command /apiary addtokens <player> <amount>
+enable-beehive-level-tokens: true
+#List of valid item types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+beehive-level-token-item: HONEYCOMB
+beehive-level-token-name: "&6[&eApiary Level Token&6]"
+beehive-level-token-lore:
+  - ""
+  - "&7Use this on a &6Beehive &7to level it up!"
+#Enable or disable the ability for players to craft Apiary level tokens.
+enable-beehive-level-tokens-crafting: true
+beehive-level-token-crafting-recipe:
+  #Set shapeless-recipe to true if the placement of the items in the crafting grid DOESN'T matter.
+  #Set shapeless-recipe to false if the placement of the items in the crafting grid DOES matter.
+  shapeless-recipe: false
+
+  #When shapeless-recipe is set to false, the number represents the location in the crafting grid. The Item material comes behind it.
+  #Crafting table positions from left to right: Top row: 1 2 3, Middle row: 4 5 6, Bottom row: 7 8 9
+  #List of valid item types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+  #In this default example the recipe is 8 honey blocks surrounding 1 diamond block in the middle.
+  recipe:
+    1: HONEY_BLOCK
+    2: HONEY_BLOCK
+    3: HONEY_BLOCK
+    4: HONEY_BLOCK
+    5: DIAMOND_BLOCK
+    6: HONEY_BLOCK
+    7: HONEY_BLOCK
+    8: HONEY_BLOCK
+    9: HONEY_BLOCK
+
+  #When shapeless-recipe is set to true, the items should be set like it this example. Here the number represents the amount needed.
+  #In this example the location of the blocks doesn't matter, you just need 8 honey blocks and 1 diamond block.
+#  recipe:
+#    HONEY_BLOCK: 8
+#    DIAMOND_BLOCK: 1
+
+#The message that gets sent when a player levels up an Apiary beehive. Placeholder %NEW_LEVEL% may be used.
+beehive-level-up-message: "&6Leveled up to &7lv.&e%NEW_LEVEL%"
+#A lists of commands that you can run when someone upgrades a beehive. Placeholder %PLAYER% may be used.
+beehive-level-up-commands:
+  - ""
+  - ""
+#The message that gets sent when a beehive hits the minimum level required to harvest honey blocks from it.
+unlock-honey-block-harvest-message: "&7You can now harvest &6Honey Blocks &7by using a &6Golden Hoe"
+#The message that gets sent when someone tries to level up a maxed out beehive.
+beehive-max-level-message: "&cThis beehive is already max level!"
+#Enable or disable the custom animation when an Apiary beehive is leveled up.
+beehive-level-up-animation: true
+
+#Enable or disable the mechanic where people can upgrade their own crafted beehives with beehive leveling tokens without having to use any command.
+enable-vanilla-beehive-upgrade: true
+#The preset that a vanilla beehive will become when upgraded to an Apiary beehive.
+vanilla-beehive-upgrade-preset: "default"
+#Determines whether the newly upgraded beehive will spawn the bees listed in the preset it became.
+vanilla-beehive-spawns-bees-when-upgraded: true
+
+#These are the beehive presets that you can give to yourself in game with the command '/apiary give <player> <presetName> <amount>"
+beehive-presets:
+  #This is the name of the preset that should be used in the command, you may use any name you want.
+  'default':
+    #Name of the beehive.
+    beehive-name: "&6Beehive"
+    #Starting level of the beehive. (Can be upgraded with leveling tokens)
+    level: 1
+    #The bees that will spawn when placing this beehive. Do not add more than 3 bees!
+    bees:
+      - "&eBee"
+      - "&eBee"
+      - "&eBee"
+
+  'sky':
+    beehive-name: "&bSky Bees"
+    level: 2
+    bees:
+      - "&9Guard"
+      - "&3Worker"
+      - "&dQueen"
+
+  'dark':
+    beehive-name: "&8Dark Bees"
+    level: 4
+    bees:
+      - "&2Worker"
+      - "&2Soldier"
+      - "&2Queen"
+
+  'red':
+    beehive-name: "&4Red Hive"
+    level: 3
+    bees:
+      - "&cWorker"
+      - "&cWarrior"
+      - "&d*&cQueen&d*"
+
+  'honey':
+    beehive-name: "&6* &eHoney Collectors &6*"
+    level: 5
+    bees:
+      - "&6Worker"
+      - "&aFlower Picker"
+      - "&6Queen"
+
+  'super':
+    beehive-name: "&4&m--&r &6SUPER HIVE &4&m--&r"
+    level: 10
+    bees:
+      - "&eSUPER BEE"
+      - "&eSUPER BEE"
+      - "&eSUPER QUEEN"
+
+  'lotr':
+    beehive-name: "&6*&2The Fellowship&6*"
+    level: 5
+    bees:
+      - "&eGimli"
+      - "&6Aragorn"
+      - "&2Legolas"
+
+  'evil':
+    beehive-name: "&c- &4Barad-dûr &c-"
+    level: 8
+    bees:
+      - "&4Sauron"
+      - "&4*&fSaruman&4*"
+      - "&9Witch-King"
+
+  'hobbits':
+    beehive-name: "&aHobbits"
+    level: 2
+    bees:
+      - "&bFrodo"
+      - "&bSam"
+      - "&cSméagol"
+
+  '1':
+    beehive-name: "&aHive 1"
+    level: 1
+    bees:
+      - "&fBee 1"
+      - "&fBee 2"
+      - "&fBee 3"
+  '2':
+    beehive-name: "&bHive 2"
+    level: 1
+    bees:
+      - "&fBee 1"
+      - "&fBee 2"
+      - "&fBee 3"
+  '3':
+    beehive-name: "&eHive 3"
+    level: 1
+    bees:
+      - "&fBee 1"
+      - "&fBee 2"
+      - "&fBee 3"

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn package:*)",
+      "Bash(mvn compile:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn test:*)",
+      "Bash(mvn dependency:*)",
+      "Bash(mvn verify:*)",
+      "Bash(mvn -q package:*)"
+    ]
+  }
+}

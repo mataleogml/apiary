@@ -1,0 +1,63 @@
+# --- Build output ---
+target/
+build/
+out/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# --- Maven ---
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.properties
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# --- IDE: IntelliJ IDEA ---
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# --- IDE: Eclipse ---
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated/
+
+# --- IDE: VS Code ---
+.vscode/
+*.code-workspace
+
+# --- IDE: NetBeans ---
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# --- OS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Desktop.ini
+
+# --- Logs / runtime ---
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+# --- Local test server scratch ---
+test-server/
+run/
+
+# --- Claude per-user overrides ---
+.claude/settings.local.json
+.claude/.credentials*

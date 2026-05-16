@@ -1,0 +1,60 @@
+name: Apiary
+version: ${project.version}
+main: net.auroric.apiary.Apiary
+api-version: "1.21"
+authors: [Auroric]
+description: ${project.description}
+
+commands:
+  apiary:
+    description: Apiary main command
+    usage: /<command> help
+    aliases: [bee, bh]
+  beehivespro:
+    description: Legacy BeehivesPro alias (toggle via legacy-compatibility.command-aliases in config)
+    usage: /<command> help
+    aliases: [bp, bhp]
+
+permissions:
+  apiary.admin:
+    description: Full access to all Apiary commands and features.
+    default: op
+  apiary.default:
+    description: View Apiary help and basic info.
+    default: true
+  apiary.reload:
+    description: Reload the Apiary configuration.
+    default: op
+  apiary.give:
+    description: Give Apiary beehives to players.
+    default: op
+  apiary.addtokens:
+    description: Give level tokens to players.
+    default: op
+  apiary.migrate:
+    description: Run migration from BeehivesPro.
+    default: op
+  apiary.harvest-honey-blocks:
+    description: Harvest honey blocks from leveled beehives.
+    default: true
+  # Legacy BeehivesPro permission nodes — kept declared so server admins
+  # see them in tab completion. They are honoured at runtime only when
+  # legacy-compatibility.permissions is true in config.yml.
+  beehivespro.admin:
+    description: (legacy) Full access — honoured only when legacy permission compat is enabled.
+    default: false
+  beehivespro.default:
+    description: (legacy) View Apiary help — honoured only when legacy permission compat is enabled.
+    default: false
+  beehivespro.reload:
+    description: (legacy) Reload — honoured only when legacy permission compat is enabled.
+    default: false
+  beehivespro.give:
+    description: (legacy) Give — honoured only when legacy permission compat is enabled.
+    default: false
+  beehivespro.addtokens:
+    description: (legacy) Add tokens — honoured only when legacy permission compat is enabled.
+    default: false
+  beehivespro.harvest-honey-blocks:
+    description: (legacy) Harvest — honoured only when legacy permission compat is enabled.
+    default: false
